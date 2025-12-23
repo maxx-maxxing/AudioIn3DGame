@@ -966,6 +966,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7691d46475454bc5a988e75e66048f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
+  moveSpeed: 5
+  controller: {fileID: 1882944135}
+  cam: {fileID: 1882944134}
+  lookSensitivity: 2
+  minXRotation: -80
+  maxXRotation: 80
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -809,6 +809,7 @@ GameObject:
   - component: {fileID: 1882944136}
   - component: {fileID: 1882944137}
   - component: {fileID: 1882944138}
+  - component: {fileID: 1882944139}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1001,6 +1002,26 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1882944139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1882944133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9971023222f8e2543889475f9026f27c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Footsteps
+  footstepClips:
+  - {fileID: 8300000, guid: 2fa24093ffd6640fb819ed34e749c9c2, type: 3}
+  - {fileID: 8300000, guid: b2e5a656a4ae74deb9c67d7ee019bdaf, type: 3}
+  audioSource: {fileID: 1882944136}
+  controller: {fileID: 1882944135}
+  footstepThreshold: 0.3
+  footstepRate: 0.5
+  lastFootstepTime: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

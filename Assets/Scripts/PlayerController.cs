@@ -4,12 +4,18 @@ public class PlayerController : MonoBehaviour
 {
     public float moveSpeed;
     public CharacterController controller; // Controls the Character Controller component of Player GO
+    public Rigidbody rig;
 
     public Transform cam; // Controls x,y,z of camera while looking around
     public float lookSensitivity; // tbd
     public float minXRotation; // tbd
     public float maxXRotation; // tbd
     private float currXRotation; // tbd
+
+    void Start()
+    {
+        Cursor.lockState = CursorLockMode.Locked; // Re-enable cursor by pressing escape
+    }
 
     void Update()
     {
@@ -19,7 +25,16 @@ public class PlayerController : MonoBehaviour
 
     void Move()
     {
+        float x = Input.GetAxisRaw("Horizontal"); // Returns -1, 0, or 1
+        float z = Input.GetAxisRaw("Vertical");
         
+        Vector3 dir = transform.right * x + transform.forward * z;
+        dir.Normalize();
+        dir *= moveSpeed * Time.deltaTime;
+        controller.Move(dir);
+        
+        rig.linearVelocity = new Vector3(x, 0, z) * moveSpeed; // Movement of the rigidbody
+        rig.linearVelocity = dir;
     }
     
     void Look()

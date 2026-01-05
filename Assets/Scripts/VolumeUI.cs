@@ -25,7 +25,7 @@ public class VolumeUI : MonoBehaviour
         PlayerPrefs.SetFloat("Master", masterSlider.value);
     }
     
-    public void UpdateSFXVolume()
+    public void UpdateSfxVolume()
     {
         mixer.SetFloat("SFX", masterSlider.value);
         PlayerPrefs.SetFloat("SFX", masterSlider.value);
@@ -53,6 +53,23 @@ public class VolumeUI : MonoBehaviour
         else
         {
             SetSliders();
+        }
+    }
+
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            window.SetActive(!window.activeInHierarchy);
+        }
+
+        if (window.activeInHierarchy)
+        {
+            Cursor.lockState = CursorLockMode.None;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.Locked;
         }
     }
 }

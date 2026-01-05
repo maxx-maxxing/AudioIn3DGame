@@ -20,7 +20,11 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         Move();
-        Look();
+
+        if (Cursor.lockState == CursorLockMode.Locked)
+        {
+            Look();
+        }
     }
 
     void Move()

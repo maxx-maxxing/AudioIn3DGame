@@ -13,23 +13,27 @@ public class VolumeUI : MonoBehaviour
 
     void SetSliders()
     {
-        masterSlider.value = PlayerPrefs.GetFloat("Master");
-        sfxSlider.value = PlayerPrefs.GetFloat("SFX");
-        musicSlider.value = PlayerPrefs.GetFloat("Music");
-        
+        masterSlider.value = PlayerPrefs.GetFloat("Master", 0f);
+        sfxSlider.value    = PlayerPrefs.GetFloat("SFX", 0f);
+        musicSlider.value  = PlayerPrefs.GetFloat("Music", 0f);
     }
+
 
     public void UpdateMasterVolume()
     {
         mixer.SetFloat("Master", masterSlider.value);
         PlayerPrefs.SetFloat("Master", masterSlider.value);
+        PlayerPrefs.Save();
     }
+
     
     public void UpdateSfxVolume()
     {
-        mixer.SetFloat("SFX", masterSlider.value);
-        PlayerPrefs.SetFloat("SFX", masterSlider.value);
+        mixer.SetFloat("SFX", sfxSlider.value);
+        PlayerPrefs.SetFloat("SFX", sfxSlider.value);
     }
+
+
 
     public void UpdateMusicVolume()
     {
@@ -40,12 +44,12 @@ public class VolumeUI : MonoBehaviour
     void Start ()
     {
         // do we have saved volume player prefs?
-        if(PlayerPrefs.HasKey("MasterVolume"))
+        if(PlayerPrefs.HasKey("Master"))
         {
             // set the mixer volume levels based on the saved player prefs
-            mixer.SetFloat("MasterVolume", PlayerPrefs.GetFloat("MasterVolume"));
-            mixer.SetFloat("SFXVolume", PlayerPrefs.GetFloat("SFXVolume"));
-            mixer.SetFloat("MusicVolume", PlayerPrefs.GetFloat("MusicVolume"));
+            mixer.SetFloat("Master", PlayerPrefs.GetFloat("Master"));
+            mixer.SetFloat("SFX", PlayerPrefs.GetFloat("SFX"));
+            mixer.SetFloat("Music", PlayerPrefs.GetFloat("Music"));
 
             SetSliders();
         }
@@ -53,7 +57,11 @@ public class VolumeUI : MonoBehaviour
         else
         {
             SetSliders();
+            mixer.SetFloat("Master", masterSlider.value);
+            mixer.SetFloat("SFX", sfxSlider.value);
+            mixer.SetFloat("Music", musicSlider.value);
         }
+
     }
 
     void Update()
